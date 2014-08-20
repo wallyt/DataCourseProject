@@ -1,4 +1,6 @@
-# Explain what's about to happen
+# The run_analysis function reads, cleans and reformats activity tracking
+# data collected and made available by the University of California at
+# Irvine
 
 run_analysis <- function() {
     # Read everything in
