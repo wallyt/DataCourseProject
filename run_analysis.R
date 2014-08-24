@@ -60,7 +60,6 @@ run_analysis <- function() {
     
     # Join total_y with activity_labels to convert from activity codes to
     # activity names using join() from the plyr package
-#    library(plyr)
     total_y <- join(total_y, activity_labels, by = "V1")
     
     # Delete now-unused activity code column, rename and add to filtered_data
@@ -74,7 +73,6 @@ run_analysis <- function() {
     final_set <- cbind(total_subjects, combined_set)
     
     # Melt final_set and recast using melt() and dcast() from the reshape2 package
-#    library(reshape2)
     set_melt <- melt(final_set, id = c("Test_Subject", "Activity"), measure.vars = colnames(final_set[,-1:-2]))
     set_cast <- dcast(set_melt, Test_Subject + Activity ~ variable, mean)
     
