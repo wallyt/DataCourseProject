@@ -5,6 +5,8 @@ The run_analysis.R script reads, cleans and reformats a data set of activity-tra
 
 run\_analysis.R contains two functions: run\_analysis(), which performs all of the reading, cleaning and shaping of the data; and ensurePkg(), which is a helper function to ensure the packages needed by run_analysis() are installed and loaded into R.
 
+The output of the function is a text file named "set_cast.txt" that is a tidy data set with the average for each variable for each activity and subject. Each measured and calculated variable has its own column, each different observation of that variable has its own row and every variable in this table is related to each other (ie, additional tables not needed).
+
 **Details and step-by-step explanations of the functions are in the [code book](https://github.com/wallyt/DataCourseProject/blob/master/Codebook.md).**
 
 ## Project Summary
