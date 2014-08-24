@@ -5,7 +5,7 @@ The run_analysis.R script reads, cleans and reformats a data set of activity-tra
 
 run\_analysis.R contains two functions: run\_analysis(), which performs all of the reading, cleaning and shaping of the data; and ensurePkg(), which is a helper function to ensure the packages needed by run_analysis() are installed and loaded into R.
 
-Details and step-by-step explanations of the functions are in the [code book](https://github.com/wallyt/DataCourseProject/blob/master/Codebook.md).
+**Details and step-by-step explanations of the functions are in the [code book](https://github.com/wallyt/DataCourseProject/blob/master/Codebook.md).**
 
 ## Project Summary
 Using the data sets provided, run_analysis.R:
