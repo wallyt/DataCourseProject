@@ -7,7 +7,7 @@
 # The run_analysis function reads, cleans and reformats activity tracking
 # data collected and made available by the University of California at
 # Irvine. See README.md file for an overview and Codebook.md for details
-# on reading and running run_analysis.
+# on reading and running run_analysis.R.
 
 #################################################################################
 
@@ -28,7 +28,7 @@ run_analysis <- function() {
     # Set working directory
     setwd("/users/wallythornton/datasciencecoursera/Getting_and_Cleaning_Data/Data_Course_Project/")
     
-    # Read everything in
+    # Read in all needed files
     x_test <- read.table("./UCI HAR Dataset/test/X_test.txt")
     y_test <- read.table("./UCI HAR Dataset/test/Y_test.txt")
     subject_test <- read.table("./UCI HAR Dataset/test/subject_test.txt")
@@ -39,12 +39,12 @@ run_analysis <- function() {
     activity_labels <- read.table("./UCI HAR Dataset/activity_labels.txt")
     features <- read.table("./UCI HAR Dataset/features.txt")
     
-    # Combine the two groups and add features as column headers
+    # Combine the two groups and add features as column names
     total_x <- rbind(x_test, x_train)
     total_y <- rbind(y_test, y_train)
     colnames(total_x) <- as.vector(features[[2]])
     
-    # Find and extract the columns that measure mean and std
+    # Find and extract to a new table the columns that measure mean and std
     filtered_data <- total_x[, grep("[Mm]ean|[Ss][Tt][Dd]", names(total_x))]
     
     # Clean up the column names for readability and consistency
@@ -58,7 +58,7 @@ run_analysis <- function() {
     names(filtered_data) <- gsub("\\(t", "(time", names(filtered_data))
     names(filtered_data) <- gsub("", "", names(filtered_data))
     
-    # Join total_y with activity_labels to convert from activity codes to
+    # Join total_y and activity_labels to convert from activity codes to
     # activity names using join() from the plyr package
     total_y <- join(total_y, activity_labels, by = "V1")
     
@@ -67,12 +67,14 @@ run_analysis <- function() {
     colnames(total_y)[1] <- "Activity"
     combined_set <- cbind(total_y, filtered_data)
     
-    # Combine subject groups, rename and add to combined_set, creating final_set
+    # Combine subject groups, rename the column and add to combined_set, creating final_set
     total_subjects <- rbind(subject_test, subject_train)
     colnames(total_subjects)[1] <- "Test_Subject"
     final_set <- cbind(total_subjects, combined_set)
     
     # Melt final_set and recast using melt() and dcast() from the reshape2 package
+    # This reshape also calculates the mean for each of the measurements for each
+    # combination of test subject and activity
     set_melt <- melt(final_set, id = c("Test_Subject", "Activity"), measure.vars = colnames(final_set[,-1:-2]))
     set_cast <- dcast(set_melt, Test_Subject + Activity ~ variable, mean)
     
