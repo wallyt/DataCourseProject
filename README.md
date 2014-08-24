@@ -1,7 +1,9 @@
 # Getting and Cleaning Data Course Project
 ### Wally Thornton
 ## Overview
-The run_analysis.R function reads, cleans and reformats a data set of activity tracking measurements, collected and made available by the University of California at Irvine. The data can be found [here](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip) and a description of the data can be found [here](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones).
+The run_analysis.R function reads, cleans and reformats a data set of activity tracking measurements, collected and made available by the University of California at Irvine. The data can be downloaded [here](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip) and a description of the data can be found [here](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones).
+
+run\_analysis.R contains two functions: run\_analysis(), which performs all of the reading, cleaning and shaping of the data; and ensurePkg(), which is a helper function to ensure the packages needed by run_analysis() are installed and loaded into R.
 
 ## Project Summary
 Using the data sets provided, run_analysis.R:
@@ -11,7 +13,7 @@ Using the data sets provided, run_analysis.R:
 4. Labels the data set with descriptive variable names
 5. Creates and writes a tidy data set that shows the average (mean) of each variable for each activity
 
-Before running, read the accompanying [codebook](https://github.com/wallyt/DataCourseProject/blob/master/Codebook.md).
+Before running, make sure you read the accompanying [code book](https://github.com/wallyt/DataCourseProject/blob/master/Codebook.md).
 
-## Modifications
-Note that the UCI HAR data set should be unzipped into the working directory where run_analysis is located and that line 16 should be changed to your working directory before running.
+## Code Modifications
+Note that the UCI HAR data set should be unzipped into the working directory where run_analysis.R is located and that line 29 should be changed to this working directory before running.
